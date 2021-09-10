@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot Thymeleaf Web Application</title>
+</head>
+<body>
+<header>
+    <h1>Courses List</h1>
+</header>
+<main>
+    <h2>Choose course:</h2>
+    <input type="radio" name="courseId" th:each="x: ${list}" th:value="${x.getCourseId()}" th:text="${x.getName()}"/>
+    <br/>
+    <a href="/addStudent">Submit</a>
+</main>
+</body>
+</html>

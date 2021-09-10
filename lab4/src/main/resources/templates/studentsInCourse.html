@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>WP lab - Students in Course</title>
+
+</head>
+<body style="background-color: #333333;color: white;padding: 20px">
+<header>
+    <h1>Students in Course </h1>
+</header>
+<section>
+
+    <a href="/login" style="margin-right: 10px;color: aqua">Login</a>
+    <a href="/logout" style="margin-right: 10px;color: aqua">Logout</a>
+    <h4 th:text="${course.getName()}"></h4>
+    <div  th:each="x: ${grades}">
+        <span th:text="${x.getUsername()}"></span>
+        <span th:text="${x.getGrade()}"></span>
+    </div>
+<!--    <div  th:each="x: ${studenti}">-->
+<!--        <span th:text="${x.getUsername()}"></span>-->
+<!--    </div>-->
+    <a href="/courses">Back</a>
+</section>
+
+</body>
+</html>

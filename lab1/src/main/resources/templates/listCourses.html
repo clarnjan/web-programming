@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot Thymeleaf Web Application</title>
+</head>
+<body style="background-color: #333333;color: white;padding: 20px">
+<header>
+    <h1>Courses List</h1>
+</header>
+<main>
+    <h2>Choose course:</h2>
+    <div th:if="${hasError}">
+        <h3 th:text="${error}" style="color: red"></h3>
+    </div>
+    <form method="post" action="/courses/search">
+        <input type="text" name="search">
+        <button type="submit">Search</button>
+    </form>
+    <br>
+    <a href="/courses/add" style="color: aqua">Create course</a>
+    <br><br>
+    <form method="post" action="/listCourses">
+        <div th:each="x: ${list}" style="font-weight: bold" >
+            <input type="radio" name="courseId" th:value="${x.getCourseId()}" th:text="${x.getName()}"/>
+            <br>
+            <label th:text="${x.getDescription()}"></label>
+            <label th:text="${x.getTeacher()}"></label>
+            <br>
+            <label th:text="${x.getType()}"></label>
+            <br>
+            <a th:href="@{'/courses/delete/{id}' (id=${x.getCourseId()})}" style="margin-right: 10px;color: aqua">Delete</a>
+            <a th:href="@{'/courses/edit-form/{id}' (id=${x.getCourseId()})}" style="color: aqua">Edit course</a>
+            <br>
+            <br>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</main>
+</body>
+</html>
